@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiss Day Animation</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FFEAC5; /* Light yellow background */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Full-screen container for the kiss animation */
+        .kiss-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 0; /* Set lower z-index so the button is clickable */
+        }
+
+        /* Lips animations */
+        .left-lips, .right-lips {
+            font-size: 6em;
+            position: absolute;
+            opacity: 1;
+        }
+
+        .left-lips {
+            left: -200px; /* Start off-screen on the left */
+            animation: moveLeftLips 2s forwards, fadeOut 2s 2s forwards; /* Fade out after meeting */
+        }
+
+        .right-lips {
+            right: -200px; /* Start off-screen on the right */
+            animation: moveRightLips 2s forwards, fadeOut 2s 2s forwards; /* Fade out after meeting */
+        }
+
+        @keyframes moveLeftLips {
+            from {
+                left: -200px;
+            }
+            to {
+                left: 50%; /* Move to the center */
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes moveRightLips {
+            from {
+                right: -200px;
+            }
+            to {
+                right: 50%; /* Move to the center */
+                transform: translateX(50%);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* Heart animation */
+        .heart {
+            font-size: 8em;
+            color: red;
+            position: absolute;
+            opacity: 0;
+            animation: heartPop 1s 2s forwards, heartFadeOut 2s 3s forwards;
+        }
+
+        @keyframes heartPop {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes heartFadeOut {
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        /* Content for after the animation */
+        .page {
+            width: 80%;
+            max-width: 600px;
+            min-height: 400px;
+            background-color: #FFF;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            text-align: center;
+            font-size: 24px;
+            color: #6C4E31;
+            border: 2px dashed #F3A1A1;
+            opacity: 0;
+            z-index: 1; /* Make sure the page content is on top */
+            animation: fadeInContent 1s 5s forwards;
+        }
+
+        @keyframes fadeInContent {
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #F3A1A1;
+            margin-bottom: 20px;
+        }
+
+        .message-wrapper {
+            font-size: 20px;
+            color: #6C4E31;
+            line-height: 1.5;
+        }
+
+        .message {
+            font-size: 18px;
+            color: #6C4E31;
+        }
+
+        /* Button Style */
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #FFF;
+            background-color: #F3A1A1; /* Soft pink */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block; /* Make it behave like a button */
+            text-align: center;
+            transition: background-color 0.3s ease;
+            z-index: 2; /* Ensure the button is clickable and appears on top */
+        }
+
+        .back-button:hover {
+            background-color: #F29C9C; /* Darker pink on hover */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="kiss-container">
+    <div class="left-lips">💋</div>
+    <div class="right-lips">💋</div>
+    <div class="heart">❤️</div>
+</div>
+
+<div class="page">
+    <h1>Happy Kiss Day, Shubhanshi! 💋</h1>
+    <div class="message-wrapper">
+        <div class="message">
+            Every kiss we share is a promise to keep loving each other, forever. With every kiss, I fall deeper in love with you. Your kisses make my heart skip a beat and my world shine brighter. I can't wait for all the kisses yet to come. ❤️
+        </div>
+    </div>
+
+    <!-- Back Button as an anchor link -->
+    <a href="index.html" class="back-button">Back to Valentine's Week</a>
+</div>
+
+<script>
+    // Function to trigger animations and make sure everything is in order
+    window.onload = function () {
+        setTimeout(() => {
+            // Start fading the heart and lips after meeting
+            document.querySelector('.heart').style.opacity = '1';
+            document.querySelector('.left-lips').style.opacity = '0';
+            document.querySelector('.right-lips').style.opacity = '0';
+        }, 2000); // Delay for the lips meeting
+
+        setTimeout(() => {
+            // After animations are finished, reveal the page content
+            document.querySelector('.page').style.opacity = '1';
+        }, 4500); // Content fades in after the kiss and heart animation is complete
+    };
+</script>
+
+</body>
+</html>

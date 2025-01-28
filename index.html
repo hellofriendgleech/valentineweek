@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Week</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #FAF4D0; /* Light yellow background */
+            color: #703B3B; /* Dark red-brown text color for contrast */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 1s ease;
+        }
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+        .typewriter {
+            font-size: 20px;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+            animation: typing 3.5s steps(30, end), blink 0.5s step-end infinite alternate;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            from { border-color: transparent; }
+            to { border-color: #EA4C4C; /* Bright red cursor color */ }
+        }
+        .week-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .day-card {
+            width: 90%;
+            max-width: 300px;
+            padding: 15px;
+            background-color: #FAF4D0; /* Light yellow background for the cards */
+            color: #703B3B; /* Dark red-brown for text */
+            text-align: center;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Smooth transition for size change, background, and text color */
+        }
+        .day-card .lock {
+            font-size: 20px;
+        }
+        .countdown {
+            font-size: 14px;
+            position: absolute;
+            bottom: 20px;
+            left: 65%;
+            transform: translateX(-50%);
+            display: none;
+            color: #C14545; /* Muted red color for countdown */
+        }
+        .day-card:hover .countdown {
+            display: block;
+        }
+        /* On hover, make the div grow slightly in size and change text color */
+        .day-card:hover {
+            transform: scale(1.05); /* Slightly expand the div */
+            background-color: #EA4C4C; /* Change background color on hover (Bright red) */
+            color: #FAF4D0; /* Light yellow text color on hover for both the day name and countdown */
+        }
+        .day-card:hover .countdown {
+            color: #FAF4D0; /* Light yellow countdown color on hover */
+        }
+        /* Remove default link styling */
+        a {
+            color: inherit; /* Inherit color from the parent (no blue) */
+            text-decoration: none; /* Remove underline */
+        }
+        .day-card.disabled {
+            pointer-events: none; /* Disable click for days that aren't today */
+            opacity: 0.5; /* Make the day appear disabled */
+        }
+        @media (max-width: 768px) {
+            .typewriter {
+                font-size: 18px;
+            }
+            .day-card {
+                padding: 10px;
+            }
+            .day-card .lock {
+                font-size: 18px;
+            }
+        }
+        .info-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            text-decoration: none;
+            color: #6C4E31; /* Match the index page palette */
+            background-color: #FFEAC5;
+            border: 2px solid #6C4E31;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .info-icon:hover {
+            background-color: #FFDBB5; /* Slight hover effect */
+            transform: scale(1.1);
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const days = [
+                "Rose Day",
+                "Propose Day",
+                "Chocolate Day",
+                "Teddy Day",
+                "Promise Day",
+                "Hug Day",
+                "Kiss Day",
+                "Valentine's Day"
+            ];
+
+            const dayDates = [7, 8, 9, 10, 11, 12, 13, 14]; // Actual dates for each day in Valentine's Week
+
+            const today = new Date();
+            const currentDay = today.getDate();
+            const currentMonth = today.getMonth();
+
+            const typewriter = document.querySelector(".typewriter");
+            const weekContainer = document.querySelector(".week-container");
+            const typewriterMessage = document.querySelector(".typewriter");
+
+            // Check if it's Valentine's Week (Feb 7th to Feb 14th)
+            if (currentMonth === 1 && currentDay >= 7 && currentDay <= 14) {
+                typewriterMessage.innerText = "Happy Valentine's Week! ❤️";  // Valentine's Week message
+            } else {
+                typewriterMessage.innerText = "Come back on Valentine's Week!"; // Default message
+            }
+
+            // Function to calculate the countdown for each day
+            const calculateCountdown = (dayDate) => {
+                const targetDate = new Date(today.getFullYear(), 1, dayDate); // February (month 1) and given day
+                if (today > targetDate) targetDate.setFullYear(targetDate.getFullYear() + 1); // If the target date is in the past, set for next year
+                const timeDiff = targetDate - today;
+                const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hoursLeft = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                return `${daysLeft}d ${hoursLeft}h ${minutesLeft}m`;
+            };
+
+            setTimeout(() => {
+                document.body.style.backgroundColor = "#703B3B"; // Change background to dark brown
+                typewriter.style.display = "none";
+
+                weekContainer.style.display = "flex";
+                days.forEach((day, index) => {
+                    const dayDiv = document.createElement("div");
+                    dayDiv.classList.add("day-card");
+
+                    const dayDate = dayDates[index]; // Get the correct date from the dayDates array
+                    const lockIcon = currentMonth === 1 && currentDay === dayDate ? "" : "<span class='lock'>&#128274;</span>";
+
+                    // Check if the current day matches the specific day
+                    const isToday = currentMonth === 1 && currentDay === dayDate;
+                    const dayLink = day.toLowerCase().replace(/\s+/g, '-') + '.html'; // Convert the day to a valid file name
+
+                    // If it's today, wrap in an anchor tag, otherwise just the div
+                    const linkClass = isToday ? "" : "disabled";
+                    const dayContent = `
+                    <span>${day}</span>
+                    ${lockIcon}
+                    <div class="countdown">${calculateCountdown(dayDate)}</div>
+                `;
+
+                    if (isToday) {
+                        // Only for today, wrap in an <a> tag
+                        dayDiv.innerHTML = `<a href="${dayLink}" class="${linkClass}">${dayContent}</a>`;
+                    } else {
+                        // For other days, no link
+                        dayDiv.innerHTML = dayContent;
+                    }
+
+                    weekContainer.appendChild(dayDiv);
+                });
+            }, 4000);
+        });
+    </script>
+
+</head>
+<body>
+<a href="info.html" class="info-icon" title="More about this website">i</a>
+<div class="container">
+    <div class="typewriter"></div>
+    <div class="week-container"></div>
+</div>
+</body>
+</html>

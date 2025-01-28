@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Day</title>
+    <style>
+        html {
+            --s: 100px; /* control the size */
+            --c1: #fdf1cc; /* Light yellow */
+            --c2: #987f69; /* Brown */
+            --c3: #FF4C4C; /* Red */
+
+            --g: var(--c1) 3.125%, var(--c2) 0 9.375%,
+            var(--c1) 0 15.625%, var(--c2) 0 21.875%,
+            var(--c1) 0 28.125%, #0000 0;
+            background:
+                    linear-gradient(225deg, #0000 3.125%, var(--c2) 0 9.375%,
+                    #0000 0 78.125%, var(--c2) 0 84.375%, #0000 0)
+                    0 calc(var(--s)/2),
+                    linear-gradient(45deg, var(--g)) 0 var(--s),
+                    linear-gradient(45deg, var(--g)) calc(var(--s)/-2) calc(var(--s)/-2),
+                    linear-gradient(225deg, var(--g)) var(--s) 0,
+                    linear-gradient(225deg, var(--g)) calc(var(--s)/2) var(--s),
+                    repeating-linear-gradient(-45deg, var(--c1) -3.125% 3.125%, var(--c2) 0 9.375%);
+            background-size: calc(2*var(--s)) calc(2*var(--s));
+        }
+
+        body {
+            font-family: "Courier New", Courier, monospace;
+            color: #FFEAC5; /* Light yellow text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            text-align: center;
+            background-color: #703B3B; /* Dark brown background */
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #FFDBB5; /* Light peach color for title */
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-out;
+            background-color: #603F26; /* Dark brown for title background */
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .message-box {
+            background-color: #FFEAC5; /* Light yellow background */
+            color: #703B3B; /* Dark brown text color */
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 80%;
+            margin: 20px;
+        }
+
+        .message {
+            font-size: 24px;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-out;
+            font-style: italic;
+        }
+
+        .go-back-button {
+            background-color: #6C4E31; /* Brown for the button */
+            color: #FFEAC5; /* Light yellow text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .go-back-button:hover {
+            background-color: #603F26; /* Dark brown on hover */
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+            .message {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Happy Promise Day, My Shubhanshi! 💍❤️</h1>
+
+<!-- Message Box with the custom message -->
+<div class="message-box">
+    <p class="message">
+        "Shubhanshi, I promise to be by your side forever, to love you more each day, and to always keep my word. 💕💍 Every moment spent with you is a cherished memory, and I vow to never take that for granted. You are my promise, and I will always love you with all my heart."
+    </p>
+</div>
+
+<!-- Go Back Button -->
+<button class="go-back-button" onclick="window.location.href='index.html'">Go Back to Valentine's Week</button>
+
+<script>
+    // Any additional functionality can be added here if needed
+</script>
+
+</body>
+</html>

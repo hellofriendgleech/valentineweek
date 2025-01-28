@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hug Day</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #FFEAC5; /* Light yellow background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            transition: background-color 1s ease;
+        }
+
+        h1 {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #6C4E31; /* Brown text */
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .figure {
+            width: 15vw;
+            height: 24vw;
+            max-width: 100px;
+            max-height: 160px;
+            background-color: #FF4C4C; /* Red for the figures */
+            border-radius: 50px 50px 0 0; /* Rounded head and shoulders */
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: grab;
+            user-select: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 1s, opacity 1s;
+        }
+
+        .figure::before {
+            content: "";
+            width: 9vw;
+            height: 9vw;
+            max-width: 60px;
+            max-height: 60px;
+            background-color: #FF4C4C;
+            border-radius: 50%;
+            position: absolute;
+            top: -25%; /* Position the head above the body */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .figure:hover {
+            transform: scale(1.1);
+        }
+
+        .left-figure {
+            left: 5%;
+        }
+
+        .right-figure {
+            right: 5%;
+        }
+
+        .message-wrapper {
+            max-width: 80%; /* Limit message width */
+            margin: 0 auto;
+            text-align: center;
+            font-size: 2vw;
+            max-font-size: 18px;
+        }
+
+        .message {
+            color: #FFEAC5; /* Light yellow text */
+            display: none;
+            max-width: 90%;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 5vw;
+                top: 5%;
+            }
+
+            .figure {
+                width: 25vw;
+                height: 40vw;
+                max-width: 120px;
+                max-height: 180px;
+            }
+
+            .left-figure {
+                left: 2%;
+            }
+
+            .right-figure {
+                right: 2%;
+            }
+
+            .message-wrapper {
+                font-size: 3vw;
+                top: 65%;
+            }
+
+            .message {
+                font-size: 4vw; /* Message smaller on mobile */
+            }
+        }
+        .back-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #FFF;
+            background-color: #6C4E31; /* Brown background */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #5A3E28; /* Darker brown on hover */
+        }
+    </style>
+</head>
+<body>
+
+<h1>Happy Hug Day to the softest, most huggable girl in the world (only I get to hug you tightly)!</h1>
+
+<div class="figure left-figure" id="leftFigure"></div>
+<div class="figure right-figure" id="rightFigure"></div>
+<div class="message-wrapper">
+    <div class="message" id="message">
+        <p>18th October 2024, that is the day when we first hugged each other. I will never forget what I felt that day, Shubhanshi. I love you so much. Your hugs make me feel at home, safe, and finally where I wish to be. Your arms have offered me more protection and peace than anywhere else. I wanna hug you every day for the rest of my life. Thanks for these priceless gifts. Idhar aajao. 🤗❤️</p>
+    </div>
+</div>
+
+<a href="index.html" class="back-button">Back to Valentine's Week</a>
+
+
+<script>
+    const leftFigure = document.getElementById('leftFigure');
+    const rightFigure = document.getElementById('rightFigure');
+    const message = document.getElementById('message');
+
+    let isDraggingLeft = false;
+    let isDraggingRight = false;
+
+    const onDrag = (event, figure) => {
+        const rect = figure.getBoundingClientRect();
+        const offsetX = event.clientX - rect.width / 2;
+        const offsetY = event.clientY - rect.height / 2;
+
+        figure.style.left = `${offsetX}px`;
+        figure.style.top = `${offsetY}px`;
+
+        checkHug();
+    };
+
+    const checkHug = () => {
+        const leftRect = leftFigure.getBoundingClientRect();
+        const rightRect = rightFigure.getBoundingClientRect();
+
+        const overlap = !(leftRect.right < rightRect.left ||
+            leftRect.left > rightRect.right ||
+            leftRect.bottom < rightRect.top ||
+            leftRect.top > rightRect.bottom);
+
+        if (overlap) {
+            document.body.style.backgroundColor = '#FF4C4C'; /* Change background to red */
+            leftFigure.style.transform = 'scale(1.5)';
+            rightFigure.style.transform = 'scale(1.5)';
+            leftFigure.style.opacity = '0';
+            rightFigure.style.opacity = '0';
+
+            message.style.display = 'block';
+        }
+    };
+
+    leftFigure.addEventListener('mousedown', () => (isDraggingLeft = true));
+    rightFigure.addEventListener('mousedown', () => (isDraggingRight = true));
+
+    document.addEventListener('mousemove', (event) => {
+        if (isDraggingLeft) onDrag(event, leftFigure);
+        if (isDraggingRight) onDrag(event, rightFigure);
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDraggingLeft = false;
+        isDraggingRight = false;
+    });
+
+    // Handle touch events for mobile
+    leftFigure.addEventListener('touchstart', () => (isDraggingLeft = true));
+    rightFigure.addEventListener('touchstart', () => (isDraggingRight = true));
+
+    document.addEventListener('touchmove', (event) => {
+        if (isDraggingLeft) onDrag(event.touches[0], leftFigure);
+        if (isDraggingRight) onDrag(event.touches[0], rightFigure);
+    });
+
+    document.addEventListener('touchend', () => {
+        isDraggingLeft = false;
+        isDraggingRight = false;
+    });
+</script>
+
+</body>
+</html>

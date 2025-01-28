@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #703B3B; /* Solid dark red background */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .page {
+            width: 80%;
+            max-width: 600px;
+            min-height: 400px;
+            background-color: #FFF;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            text-align: center;
+            font-size: 24px;
+            color: #6C4E31; /* Brown text */
+            border: 2px dashed #703B3B; /* Border color matching the background */
+            opacity: 1; /* No fade-in needed */
+            z-index: 0;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #703B3B; /* Dark red text */
+            margin-bottom: 20px;
+        }
+
+        .message-wrapper {
+            font-size: 20px;
+            color: #C14545FF; /* Changed to the new font color */
+            line-height: 1.5;
+        }
+
+        .message {
+            font-size: 18px;
+            color: #C14545FF; /* Changed to the new font color */
+        }
+
+        .timer {
+            font-size: 1.5rem;
+            color: #703B3B;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #FFF;
+            background-color: #703B3B; /* Button background color matching the page */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #F29C9C; /* Darker pink on hover */
+        }
+
+        /* Floating Heart Styles */
+        .floating-heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatHearts 10s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        /* Heart floating animation */
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-200px) rotate(180deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        /* Random positioning for floating hearts */
+        .heart1 { animation-duration: 12s; left: 5%; top: 5%; }
+        .heart2 { animation-duration: 10s; left: 15%; top: 40%; }
+        .heart3 { animation-duration: 15s; left: 40%; top: 25%; }
+        .heart4 { animation-duration: 18s; left: 60%; top: 10%; }
+        .heart5 { animation-duration: 13s; left: 75%; top: 60%; }
+        .heart6 { animation-duration: 14s; left: 20%; top: 30%; }
+        .heart7 { animation-duration: 16s; left: 10%; top: 20%; }
+        .heart8 { animation-duration: 11s; left: 50%; top: 50%; }
+        .heart9 { animation-duration: 18s; left: 30%; top: 80%; }
+        .heart10 { animation-duration: 15s; left: 80%; top: 30%; }
+        .heart11 { animation-duration: 13s; left: 65%; top: 70%; }
+        .heart12 { animation-duration: 9s; left: 5%; top: 75%; }
+        .heart13 { animation-duration: 17s; left: 40%; top: 40%; }
+        .heart14 { animation-duration: 12s; left: 60%; top: 55%; }
+        .heart15 { animation-duration: 14s; left: 35%; top: 10%; }
+        .heart16 { animation-duration: 15s; left: 25%; top: 10%; }
+        .heart17 { animation-duration: 10s; left: 70%; top: 40%; }
+        .heart18 { animation-duration: 16s; left: 15%; top: 50%; }
+        .heart19 { animation-duration: 19s; left: 55%; top: 70%; }
+        .heart20 { animation-duration: 18s; left: 80%; top: 80%; }
+        .heart21 { animation-duration: 12s; left: 12%; top: 35%; }
+        .heart22 { animation-duration: 13s; left: 67%; top: 5%; }
+        .heart23 { animation-duration: 14s; left: 30%; top: 60%; }
+        .heart24 { animation-duration: 16s; left: 45%; top: 70%; }
+        .heart25 { animation-duration: 11s; left: 55%; top: 50%; }
+        .heart26 { animation-duration: 18s; left: 30%; top: 10%; }
+        .heart27 { animation-duration: 10s; left: 15%; top: 75%; }
+        .heart28 { animation-duration: 14s; left: 10%; top: 10%; }
+        .heart29 { animation-duration: 9s; left: 75%; top: 40%; }
+        .heart30 { animation-duration: 12s; left: 25%; top: 30%; }
+        .heart31 { animation-duration: 15s; left: 45%; top: 15%; }
+        .heart32 { animation-duration: 16s; left: 80%; top: 50%; }
+        .heart33 { animation-duration: 18s; left: 60%; top: 30%; }
+        .heart34 { animation-duration: 13s; left: 5%; top: 20%; }
+        .heart35 { animation-duration: 17s; left: 40%; top: 50%; }
+        .heart36 { animation-duration: 14s; left: 25%; top: 80%; }
+        .heart37 { animation-duration: 11s; left: 10%; top: 45%; }
+        .heart38 { animation-duration: 15s; left: 70%; top: 60%; }
+        .heart39 { animation-duration: 16s; left: 35%; top: 10%; }
+        .heart40 { animation-duration: 13s; left: 15%; top: 65%; }
+        .heart41 { animation-duration: 14s; left: 50%; top: 80%; }
+        .heart42 { animation-duration: 12s; left: 60%; top: 5%; }
+        .heart43 { animation-duration: 10s; left: 80%; top: 30%; }
+        .heart44 { animation-duration: 18s; left: 45%; top: 30%; }
+        .heart45 { animation-duration: 14s; left: 10%; top: 50%; }
+        .heart46 { animation-duration: 12s; left: 75%; top: 55%; }
+        .heart47 { animation-duration: 13s; left: 35%; top: 60%; }
+        .heart48 { animation-duration: 9s; left: 50%; top: 10%; }
+        .heart49 { animation-duration: 17s; left: 20%; top: 70%; }
+        .heart50 { animation-duration: 12s; left: 40%; top: 40%; }
+        .heart51 { animation-duration: 15s; left: 30%; top: 30%; }
+        .heart52 { animation-duration: 16s; left: 60%; top: 75%; }
+        .heart53 { animation-duration: 14s; left: 55%; top: 45%; }
+        .heart54 { animation-duration: 10s; left: 65%; top: 30%; }
+        .heart55 { animation-duration: 12s; left: 75%; top: 80%; }
+        .heart56 { animation-duration: 15s; left: 10%; top: 60%; }
+        .heart57 { animation-duration: 16s; left: 35%; top: 10%; }
+        .heart58 { animation-duration: 13s; left: 70%; top: 55%; }
+        .heart59 { animation-duration: 9s; left: 5%; top: 25%; }
+        .heart60 { animation-duration: 12s; left: 45%; top: 55%; }
+        .heart61 { animation-duration: 11s; left: 55%; top: 30%; }
+        .heart62 { animation-duration: 14s; left: 50%; top: 75%; }
+        .heart63 { animation-duration: 16s; left: 65%; top: 10%; }
+        .heart64 { animation-duration: 12s; left: 30%; top: 50%; }
+        .heart65 { animation-duration: 17s; left: 40%; top: 15%; }
+        .heart66 { animation-duration: 18s; left: 75%; top: 25%; }
+        .heart67 { animation-duration: 13s; left: 45%; top: 10%; }
+        .heart68 { animation-duration: 10s; left: 20%; top: 60%; }
+        .heart69 { animation-duration: 16s; left: 60%; top: 40%; }
+        .heart70 { animation-duration: 15s; left: 5%; top: 35%; }
+        .heart71 { animation-duration: 13s; left: 50%; top: 30%; }
+        .heart72 { animation-duration: 11s; left: 25%; top: 75%; }
+        .heart73 { animation-duration: 18s; left: 75%; top: 40%; }
+        .heart74 { animation-duration: 12s; left: 35%; top: 50%; }
+        .heart75 { animation-duration: 10s; left: 15%; top: 45%; }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <h1>Happy Valentine’s Day and and and Three Month Anniversary!!! Shubhanshi!!! 💖</h1>
+    <div class="message-wrapper">
+        <div class="message">
+            Every moment with you feels like a dream. On this special day, I just want to say how much you mean to me. You make my world brighter, and I’m so grateful for every smile, every laugh, and every moment we share. I love you endlessly! 💘
+        </div>
+    </div>
+
+    <div class="timer">
+        We have been dating in love making each other happy since: <br>
+        <strong id="timer"></strong>
+    </div>
+
+    <!-- Back Button as an anchor link -->
+    <a href="index.html" class="back-button">Back to Valentine's Week</a>
+</div>
+
+<!-- Floating hearts -->
+<div class="floating-heart heart1">🥰</div>
+<div class="floating-heart heart2">❤</div>
+<div class="floating-heart heart3">🫀</div>
+<div class="floating-heart heart4">🎀</div>
+<div class="floating-heart heart5">💞</div>
+<div class="floating-heart heart6">💝</div>
+<div class="floating-heart heart7">💕</div>
+<div class="floating-heart heart8">❣</div>
+<div class="floating-heart heart9">💓</div>
+<div class="floating-heart heart10">🩷</div>
+<div class="floating-heart heart11">💗</div>
+<div class="floating-heart heart12">💖</div>
+<div class="floating-heart heart13">💟</div>
+<div class="floating-heart heart14">💘</div>
+<div class="floating-heart heart15">🥰</div>
+<div class="floating-heart heart16">❤</div>
+<div class="floating-heart heart17">🫀</div>
+<div class="floating-heart heart18">🎀</div>
+<div class="floating-heart heart19">💞</div>
+<div class="floating-heart heart20">💝</div>
+<div class="floating-heart heart21">💕</div>
+<div class="floating-heart heart22">❣</div>
+<div class="floating-heart heart23">💓</div>
+<div class="floating-heart heart24">🩷</div>
+<div class="floating-heart heart25">💗</div>
+<div class="floating-heart heart26">💖</div>
+<div class="floating-heart heart27">💟</div>
+<div class="floating-heart heart28">💘</div>
+<div class="floating-heart heart29">🥰</div>
+<div class="floating-heart heart30">❤</div>
+<div class="floating-heart heart31">🫀</div>
+<div class="floating-heart heart32">🎀</div>
+<div class="floating-heart heart33">💞</div>
+<div class="floating-heart heart34">💝</div>
+<div class="floating-heart heart35">💕</div>
+<div class="floating-heart heart36">❣</div>
+<div class="floating-heart heart37">💓</div>
+<div class="floating-heart heart38">🩷</div>
+<div class="floating-heart heart39">💗</div>
+<div class="floating-heart heart40">💖</div>
+<div class="floating-heart heart41">💟</div>
+<div class="floating-heart heart42">💘</div>
+<div class="floating-heart heart43">🥰</div>
+<div class="floating-heart heart44">❤</div>
+<div class="floating-heart heart45">🫀</div>
+<div class="floating-heart heart46">🎀</div>
+<div class="floating-heart heart47">💞</div>
+<div class="floating-heart heart48">💝</div>
+<div class="floating-heart heart49">💕</div>
+<div class="floating-heart heart50">❣</div>
+<div class="floating-heart heart51">💓</div>
+<div class="floating-heart heart52">🩷</div>
+<div class="floating-heart heart53">💗</div>
+<div class="floating-heart heart54">💖</div>
+<div class="floating-heart heart55">💟</div>
+<div class="floating-heart heart56">💘</div>
+<div class="floating-heart heart57">🥰</div>
+<div class="floating-heart heart58">❤</div>
+<div class="floating-heart heart59">🫀</div>
+<div class="floating-heart heart60">🎀</div>
+<div class="floating-heart heart61">💞</div>
+<div class="floating-heart heart62">💝</div>
+<div class="floating-heart heart63">💕</div>
+<div class="floating-heart heart64">❣</div>
+<div class="floating-heart heart65">💓</div>
+<div class="floating-heart heart66">🩷</div>
+<div class="floating-heart heart67">💗</div>
+<div class="floating-heart heart68">💖</div>
+<div class="floating-heart heart69">💟</div>
+<div class="floating-heart heart70">💘</div>
+<div class="floating-heart heart71">🥰</div>
+<div class="floating-heart heart72">❤</div>
+<div class="floating-heart heart73">🫀</div>
+<div class="floating-heart heart74">🎀</div>
+<div class="floating-heart heart75">💞</div>
+
+<script>
+    // Set the start date and time for the relationship
+    const startDate = new Date("2024-11-14T17:02:00");
+
+    // Function to update the timer every second
+    function updateTimer() {
+        const currentDate = new Date();
+        const timeDifference = currentDate - startDate; // Time difference in milliseconds
+
+        // Calculate the time difference in days, hours, and minutes
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+        // Display the time difference in the timer element
+        const timerElement = document.getElementById('timer');
+        timerElement.innerHTML = `${days} days, ${hours} hours, and ${minutes} minutes`;
+    }
+
+    // Update the timer immediately when the page loads
+    updateTimer();
+
+    // Update the timer every second
+    setInterval(updateTimer, 1000);
+</script>
+
+</body>
+</html>
