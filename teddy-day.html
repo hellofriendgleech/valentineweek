@@ -6,7 +6,7 @@
     <title>Teddy Day</title>
     <style>
         html {
-            --s: 100px; /* control the size */
+            --s: 50px; /* Adjusted size for mobile */
             --c1: #fdf1cc; /* Light yellow */
             --c2: #987f69; /* Brown */
 
@@ -29,68 +29,64 @@
             font-family: "Courier New", Courier, monospace;
             color: #FFEAC5; /* Light yellow text color */
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            overflow: auto;
             flex-direction: column;
             text-align: center;
         }
 
-        /* Ribbon style */
         .ribbon {
-            --s: 1.8em; /* the ribbon size */
-            --d: .5em;  /* the depth */
-            --c: .8em;  /* the cutout part */
-
+            --s: 1.2em; /* Adjusted for mobile */
+            --d: .3em; /* Adjusted for mobile */
+            --c: .5em; /* Adjusted for mobile */
             padding: 0 calc(var(--s) + var(--d) + .5em) var(--d);
-            line-height: 1.8;
-            background:
-                    linear-gradient(90deg, #0004 var(--d), #0000 0 calc(100% - var(--d)), #0004 0)
-                    50% / calc(100% - 2*var(--s)) 100% no-repeat;
+            line-height: 1.5;
+            background-color: #FF4C4C;
+            width: fit-content;
+            font-size: 20px; /* Adjusted for mobile */
+            font-weight: bold;
+            color: #fff;
             clip-path: polygon(0 100%, var(--s) 100%, calc(var(--s) + var(--d)) calc(100% - var(--d)),
             calc(100% - var(--s) - var(--d)) calc(100% - var(--d)), calc(100% - var(--s)) 100%,
             100% 100%, calc(100% - var(--c)) calc(50% + var(--d)/2), 100% var(--d),
             calc(100% - var(--s)) var(--d), calc(100% - var(--s) - var(--d)) 0,
             calc(var(--s) + var(--d)) 0, var(--s) var(--d), 0 var(--d), var(--c) calc(50% + var(--d)/2));
-            background-color: #FF4C4C; /* Red color for the ribbon */
-            width: fit-content;
-            font-size: 28px;
-            font-weight: bold;
-            color: #fff;
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 36px;
-            color: #FFDBB5; /* Light peach color for title */
-            margin-bottom: 20px;
-            animation: fadeIn 2s ease-out;
-            background-color: #603F26; /* Dark brown for title background */
+            font-size: 24px; /* Adjusted for mobile */
+            color: #FFDBB5;
+            background-color: #603F26;
             padding: 10px;
             border-radius: 8px;
+            margin: 10px 0;
         }
 
         .message-box {
-            background-color: #603F26; /* Darker box with #603F26 */
-            color: #FFEAC5; /* Light yellow text */
-            padding: 20px;
+            background-color: #603F26;
+            color: #FFEAC5;
+            padding: 15px;
             border-radius: 15px;
-            max-width: 80%;
-            margin: 20px;
+            max-width: 90%;
+            max-height: 70vh;
+            overflow-y: auto;
+            margin: 10px 0;
         }
 
         .message {
-            font-size: 24px;
-            margin-top: 20px;
-            animation: fadeIn 2s ease-out;
-
+            font-size: 18px; /* Adjusted for mobile */
+            margin-top: 15px;
+            line-height: 1.6;
         }
 
         .go-back-button {
-            background-color: #6C4E31; /* Brown for the button */
-            color: #FFEAC5; /* Light yellow text color */
+            background-color: #6C4E31;
+            color: #FFEAC5;
             padding: 10px 20px;
             border: none;
             border-radius: 25px;
@@ -101,36 +97,32 @@
         }
 
         .go-back-button:hover {
-            background-color: #603F26; /* Dark brown on hover */
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+            background-color: #603F26;
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .message-box {
+                max-width: 95%;
+                max-height: 60vh;
+            }
             h1 {
-                font-size: 28px;
+                font-size: 20px;
             }
             .message {
-                font-size: 20px;
+                font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- Ribbon containing the message -->
 <div class="ribbon">
     Happy Teddy Day, My Shubhanshi! 🧸💖
 </div>
 
-<!-- Message Box with the custom message -->
 <div class="message-box">
     <p class="message">
         I love you Shubhanshi. <br>
@@ -138,12 +130,7 @@
     </p>
 </div>
 
-<!-- Go Back Button -->
 <button class="go-back-button" onclick="window.location.href='index.html'">Go Back to Valentine's Week</button>
-
-<script>
-    // Any additional functionality can be added here if needed
-</script>
 
 </body>
 </html>
