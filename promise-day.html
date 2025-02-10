@@ -1,4 +1,4 @@
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -57,18 +57,31 @@
             padding: 20px;
             border-radius: 15px;
             max-width: 80%;
+            max-height: 60vh; /* Limits height to 60% of viewport */
+            overflow-y: auto; /* Enables scrolling if content overflows */
             margin: 20px;
         }
 
-        .message {
-            font-size: 24px;
-            margin-top: 20px;
-            animation: fadeIn 2s ease-out;
+        /* Style scrollbar for better aesthetics (only for WebKit browsers) */
+        .message-box::-webkit-scrollbar {
+            width: 6px;
         }
+
+        .message-box::-webkit-scrollbar-thumb {
+            background-color: #6C4E31; /* Brown scrollbar */
+            border-radius: 10px;
+        }
+
+        .message-box::-webkit-scrollbar-track {
+            background-color: #FFEAC5; /* Match background */
+        }
+
+        /* Ensure list remains aligned and responsive */
         .message-box ul {
             list-style: none; /* Removes default bullets */
             padding-left: 0;
-            text-align: left; /* Aligns text to the left */
+            text-align: left;
+            margin: 0;
         }
 
         .message-box ul li {
@@ -85,8 +98,13 @@
             flex-shrink: 0;
         }
 
-        /* Media Query for Small Screens */
+        /* Adjustments for smaller screens */
         @media (max-width: 768px) {
+            .message-box {
+                max-height: 50vh; /* Adjusts height for smaller screens */
+                padding: 15px;
+            }
+
             .message-box ul li {
                 font-size: 16px;
                 gap: 8px;
@@ -137,25 +155,25 @@
     <p class="message">
         Shubhanshi, I promise to be by your side forever, to love you more each day, and to always keep my word. 💕 <br>
         Some more promises I make:
-        <ul>
-            <li>
-                I promise to learn more about you and to love you in all the ways that you desire to be loved in. 
-            </li>
-            <li>
-                I promise to make myself a better partner and a better person for you. To be the perfect partner for you.
-            </li>
-            <li>
-                 I promise to get less gussa at things and try my best to control myself and to not to disappoint you in this regard.
-            </li>
-            <li>
-                I promise to never scream at you and to convey my thoughts and feelings in a better manner. 
-            </li>
-            <li>
-                I promise to love you forever and never give up on you (and I hope you really believe this one). 
-            </li>
-            
-            
-        </ul>
+    <ul>
+        <li>
+            I promise to learn more about you and to love you in all the ways that you desire to be loved in.
+        </li>
+        <li>
+            I promise to make myself a better partner and a better person for you. To be the perfect partner for you.
+        </li>
+        <li>
+            I promise to get less gussa at things and try my best to control myself and to not to disappoint you in this regard.
+        </li>
+        <li>
+            I promise to never scream at you and to convey my thoughts and feelings in a better manner.
+        </li>
+        <li>
+            I promise to love you forever and never give up on you (and I hope you really believe this one).
+        </li>
+
+
+    </ul>
     </p>
 </div>
 
