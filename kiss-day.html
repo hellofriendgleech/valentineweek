@@ -12,13 +12,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #FFEAC5; /* Light yellow background */
-            overflow: hidden;
-            position: relative;
+            min-height: 100vh;
+            background-color: #FFEAC5;
+            overflow-x: hidden;
         }
 
-        /* Full-screen container for the kiss animation */
         .kiss-container {
             position: absolute;
             top: 0;
@@ -28,55 +26,39 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 0; /* Set lower z-index so the button is clickable */
+            z-index: 0;
         }
 
-        /* Lips animations */
         .left-lips, .right-lips {
-            font-size: 6em;
+            font-size: 5vw;
             position: absolute;
             opacity: 1;
         }
 
         .left-lips {
-            left: -200px; /* Start off-screen on the left */
-            animation: moveLeftLips 2s forwards, fadeOut 2s 2s forwards; /* Fade out after meeting */
+            left: -20vw;
+            animation: moveLeftLips 2s forwards, fadeOut 2s 2s forwards;
         }
 
         .right-lips {
-            right: -200px; /* Start off-screen on the right */
-            animation: moveRightLips 2s forwards, fadeOut 2s 2s forwards; /* Fade out after meeting */
+            right: -20vw;
+            animation: moveRightLips 2s forwards, fadeOut 2s 2s forwards;
         }
 
         @keyframes moveLeftLips {
-            from {
-                left: -200px;
-            }
-            to {
-                left: 50%; /* Move to the center */
-                transform: translateX(-50%);
-            }
+            from { left: -20vw; }
+            to { left: 50%; transform: translateX(-50%); }
         }
 
         @keyframes moveRightLips {
-            from {
-                right: -200px;
-            }
-            to {
-                right: 50%; /* Move to the center */
-                transform: translateX(50%);
-            }
+            from { right: -20vw; }
+            to { right: 50%; transform: translateX(50%); }
         }
 
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-            }
-        }
+        @keyframes fadeOut { to { opacity: 0; } }
 
-        /* Heart animation */
         .heart {
-            font-size: 8em;
+            font-size: 8vw;
             color: red;
             position: absolute;
             opacity: 0;
@@ -84,88 +66,60 @@
         }
 
         @keyframes heartPop {
-            0% {
-                opacity: 0;
-                transform: scale(0);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
-        @keyframes heartFadeOut {
-            100% {
-                opacity: 0;
-                transform: scale(0);
-            }
-        }
+        @keyframes heartFadeOut { 100% { opacity: 0; transform: scale(0); } }
 
-        /* Content for after the animation */
         .page {
-            width: 80%;
+            width: 90%;
             max-width: 600px;
-            min-height: 400px;
             background-color: #FFF;
-            padding: 40px;
+            padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
             text-align: center;
-            font-size: 24px;
+            font-size: 1em;
             color: #6C4E31;
             border: 2px dashed #F3A1A1;
             opacity: 0;
-            z-index: 1; /* Make sure the page content is on top */
+            z-index: 1;
             animation: fadeInContent 1s 5s forwards;
+            overflow-y: auto;
+            max-height: 80vh;
         }
 
-        @keyframes fadeInContent {
-            to {
-                opacity: 1;
-            }
-        }
+        @keyframes fadeInContent { to { opacity: 1; } }
 
         h1 {
-            font-size: 32px;
+            font-size: 1.5em;
             color: #F3A1A1;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
-        .message-wrapper {
-            font-size: 20px;
+        .message {
+            font-size: 1em;
             color: #6C4E31;
             line-height: 1.5;
         }
 
-        .message {
-            font-size: 18px;
-            color: #6C4E31;
-        }
-
-        /* Button Style */
         .back-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 18px;
+            margin-top: 15px;
+            padding: 10px 15px;
+            font-size: 1em;
             color: #FFF;
-            background-color: #F3A1A1; /* Soft pink */
+            background-color: #F3A1A1;
             border: none;
             border-radius: 5px;
             text-decoration: none;
-            display: inline-block; /* Make it behave like a button */
+            display: inline-block;
             text-align: center;
             transition: background-color 0.3s ease;
-            z-index: 2; /* Ensure the button is clickable and appears on top */
         }
 
-        .back-button:hover {
-            background-color: #F29C9C; /* Darker pink on hover */
-        }
+        .back-button:hover { background-color: #F29C9C; }
 
     </style>
 </head>
@@ -179,30 +133,24 @@
 
 <div class="page">
     <h1>Happy Kiss Day, Shubhanshi! 💋</h1>
-    <div class="message-wrapper">
-        <div class="message">
-            28th November 2024, that is the day we first kissed each other. Since then we have shared hundrds of kisses (when did that happen?) and well there are billions more to come. Every kiss we share is treasured by me and is invaluable to me, always will be, forever. And I mean every kiss, that includes the ones on your hair, your scalp, your forehead, your eyebrows, between your eyebrows, your eyes, your nose, your cheeks, your lips, your chin, your shoulders, your arms, your hands, your finers, your nails, your birthmark, and soooo onnn!! With every kiss, I fall deeper in love with you. Your kisses put a thousand butterflies in my dtomach. I can't wait to kiss you again for years to come💋❤️
-        </div>
+    <div class="message">
+        28th November 2024, that is the day we first kissed each other... <br>
+        Since then we have shared hundrds of kisses (when did that happen?) and well there are billions more to come. Every kiss we share is treasured by me and is invaluable to me, always will be, forever. And I mean every kiss, that includes the ones on your hair, your scalp, your forehead, your eyebrows, between your eyebrows, your eyes, your nose, your cheeks, your lips, your chin, your shoulders, your arms, your hands, your finers, your nails, your birthmark, and soooo onnn!! With every kiss, I fall deeper in love with you. Your kisses put a thousand butterflies in my dtomach. I can't wait to kiss you again for years to come💋❤️
     </div>
-
-    <!-- Back Button as an anchor link -->
     <a href="index.html" class="back-button">Back to Valentine's Week</a>
 </div>
 
 <script>
-    // Function to trigger animations and make sure everything is in order
     window.onload = function () {
         setTimeout(() => {
-            // Start fading the heart and lips after meeting
             document.querySelector('.heart').style.opacity = '1';
             document.querySelector('.left-lips').style.opacity = '0';
             document.querySelector('.right-lips').style.opacity = '0';
-        }, 2000); // Delay for the lips meeting
+        }, 2000);
 
         setTimeout(() => {
-            // After animations are finished, reveal the page content
             document.querySelector('.page').style.opacity = '1';
-        }, 4500); // Content fades in after the kiss and heart animation is complete
+        }, 4500);
     };
 </script>
 
