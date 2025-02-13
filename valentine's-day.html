@@ -19,41 +19,43 @@
         }
 
         .page {
-            width: 80%;
+            width: 75%;
             max-width: 600px;
             min-height: 400px;
             background-color: #FFF;
-            padding: 40px;
+            padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             position: relative;
             text-align: center;
-            font-size: 24px;
+            font-size: 18px;
             color: #6C4E31; /* Brown text */
             border: 2px dashed #703B3B; /* Border color matching the background */
             opacity: 1; /* No fade-in needed */
             z-index: 0;
+            overflow-y: auto; /* Enable vertical scrolling */
+            max-height: 80vh; /* Limit height to viewport height */
         }
 
         h1 {
-            font-size: 32px;
+            font-size: 24px;
             color: #703B3B; /* Dark red text */
             margin-bottom: 20px;
         }
 
         .message-wrapper {
-            font-size: 20px;
+            font-size: 18px;
             color: #C14545FF; /* Changed to the new font color */
             line-height: 1.5;
         }
 
         .message {
-            font-size: 18px;
+            font-size: 16px;
             color: #C14545FF; /* Changed to the new font color */
         }
 
         .timer {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #703B3B;
             margin-top: 20px;
             font-weight: bold;
@@ -62,7 +64,7 @@
         .back-button {
             margin-top: 20px;
             padding: 10px 20px;
-            font-size: 18px;
+            font-size: 16px;
             color: #FFF;
             background-color: #703B3B; /* Button background color matching the page */
             border: none;
@@ -80,9 +82,9 @@
         /* Floating Heart Styles */
         .floating-heart {
             position: absolute;
-            font-size: 2rem;
+            font-size: 0.8rem;
             animation: floatHearts 10s ease-in-out infinite;
-            opacity: 0.8;
+            opacity: 0.5;
         }
 
         /* Heart floating animation */
@@ -183,16 +185,27 @@
 
 <div class="page">
     <h1>Happy Valentine’s Day and and and Three Month Anniversary!!! Shubhanshi!!! 💖</h1>
+    <div class="timer">
+        We have been dating, falling more and more in love and making each other happy since: <br>
+        <strong id="timer"></strong>
+    </div>
     <div class="message-wrapper">
         <div class="message">
-            Every moment with you feels like a dream. On this special day, I just want to say how much you mean to me. You make my world brighter, and I’m so grateful for every smile, every laugh, and every moment we share. I love you endlessly! 💘
+            <p>So, it has been three months already, and I can’t help but fall deeper in love with you every single day. ❤️ The past three months have been the best of my life simply because you’ve been such a big part of it. <strong>(You are my life, btw! 💖)</strong></p>
+
+            <p>You have made me feel thoroughly loved and incredibly happy, and I am truly grateful for that. 🥰 There have been ups and downs, but that’s completely fine—I expected it, tbh. Not to that level, but yeah, I knew there would be challenges. But just as I hoped and believed, we overcame them together, and our bond only grew deeper, better, and stronger! 💪💞</p>
+
+            <p>I am much more confident in us now than I was in the beginning, and I think that’s a pretty positive sign that we’re headed in the right direction. 💕 I love you, Shubhanshi, and I will keep loving you forever. ♾️💓</p>
+
+            <p>Thank you for the best three months of my life, and thank you for making this Valentine’s Week so special! 🥰🌹 This website will be locked once again after today, but I have locked you with me as well, so yeah—I'm looking forward to unlocking a new version of this website next year for Valentine’s Week 2026. 💌✨</p>
+
+            <p><strong>So, Shubhanshi, in the end, I want to ask you—</strong></p>
+
+            <p><strong>Will you be my Valentine? 💘🌹💍</strong></p>
         </div>
     </div>
 
-    <div class="timer">
-        We have been dating in love making each other happy since: <br>
-        <strong id="timer"></strong>
-    </div>
+
 
     <!-- Back Button as an anchor link -->
     <a href="index.html" class="back-button">Back to Valentine's Week</a>
